@@ -1,0 +1,15 @@
+//Paleta de cores
+
+$azul-marinho: #023047;
+$caramelo-quente: #A27B5C;
+$creme-suave: #FBF8CC;
+$verde-oliva-suave: #6B8F71;
+$cinza-escuro: #333333;
+$branco:  #FFFFFF;
+$preto: #000000;
+
+//Sombreamento
+@mixin borda-sombreada($h-offset, $v-offset, $blur, $spread, $color) {
+    box-shadow: $h-offset $v-offset $blur $spread $color;
+  }
+  

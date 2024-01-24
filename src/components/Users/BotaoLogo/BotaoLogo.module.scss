@@ -1,0 +1,11 @@
+@use '../../../app/scss/base/variaveis.module';
+
+.containerLogo {
+    height: 100%;
+    border-radius: 100%;
+    width: min-content;
+    display: flex;
+    .logo {
+        height: 100%;
+    }
+}

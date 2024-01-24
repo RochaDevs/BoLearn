@@ -1,0 +1,9 @@
+@use '../../../../src/app/scss/base/variaveis.module';
+
+.cabecalho {
+    height: 12vh;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    @include variaveis.borda-sombreada(2px, 2px, 4px, 0, variaveis.$azul-marinho)
+}
