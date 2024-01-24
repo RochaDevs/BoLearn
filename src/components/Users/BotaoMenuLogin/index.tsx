@@ -1,13 +1,16 @@
+import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useState, useRef, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
+import styles from './BotaoMenuLogin.module.scss';
 
 export const BotaoMenuLogin = () => {
 
   const [ancoragem, setAncoragem] = useState<null | HTMLElement>(null);
 
-  const meuRef = useRef(null);
+  const meuRef = useRef<HTMLButtonElement | null>(null);
 
   const open = Boolean(ancoragem);
 
@@ -20,7 +23,7 @@ export const BotaoMenuLogin = () => {
   };
 
   const handleClickFora = (event: MouseEvent) => {
-    if (meuRef.current && !meuRef.current.contains(event.target)) {
+    if (meuRef.current && !meuRef.current.contains(event.target as Node)) {
       setAncoragem(null);
     }
   };
@@ -46,8 +49,11 @@ export const BotaoMenuLogin = () => {
         aria-expanded={open ? 'true' : undefined}
         onMouseEnter={aoPassarOMouse}
         ref={meuRef}
+        sx={{
+          color: '#6B8F71'
+        }}
       >
-        Dashboard
+        Olá, faça seu login
       </Button>
 
       <Menu
@@ -59,9 +65,49 @@ export const BotaoMenuLogin = () => {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={aoRemoverOMouse}>Profile</MenuItem>
-        <MenuItem onClick={aoRemoverOMouse}>My account</MenuItem>
-        <MenuItem onClick={aoRemoverOMouse}>Logout</MenuItem>
+        <Box sx={{
+          width: '500px',
+          padding: '1rem',
+        }}>
+
+          <Button sx={{
+            backgroundColor: '#FBF8CC',
+            color: '#000000',
+            margin: '1rem 0rem',
+            width: '100%',
+
+            '&:hover': {
+              backgroundColor: '#f8f190'
+            }
+          }}>
+
+            <NavLink to='/login'>
+              Faça Login
+            </NavLink>
+          </Button>
+
+          <div className={styles.containerClienteNovo}>
+
+            <p>Cliente novo?</p>
+
+            <NavLink to='/login' className={styles.NavLink}>
+              Começe aqui
+            </NavLink>
+
+          </div>
+
+          <div className={styles.containerSuaConta}>
+            <div>
+              <MenuItem onClick={aoRemoverOMouse}>Criar uma lista de desejos</MenuItem>
+            </div>
+            <div>
+              <MenuItem onClick={aoRemoverOMouse}>Sua conta</MenuItem>
+              <MenuItem onClick={aoRemoverOMouse}>Seus pedidos</MenuItem>
+              <MenuItem onClick={aoRemoverOMouse}>Sua lista de desejos</MenuItem>
+            </div>
+          </div>
+
+        </Box>
       </Menu>
 
     </div>

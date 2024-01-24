@@ -1,0 +1,21 @@
+@use '../../../app/scss/base/variaveis.module';
+
+.containerClienteNovo {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+    padding-bottom: 1rem;
+
+    &:hover {
+        .NavLink {
+            color: variaveis.$caramelo-quente;
+        }
+    }
+}
+
+.containerSuaConta {
+    display: flex;
+}

@@ -1,0 +1,7 @@
+@use '../../../app/scss/base/variaveis.module';
+
+.NavLink {
+    display: flex;
+    gap: 0.25rem;
+    color: variaveis.$verde-oliva-suave;
+}

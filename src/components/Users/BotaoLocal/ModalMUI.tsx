@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { NavLink } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
+import RoomIcon from '@mui/icons-material/Room';
 
 const style = {
   position: 'absolute',
@@ -32,9 +33,10 @@ export const BasicModal = () => {
     <div>
 
       <Button onClick={handleOpen} sx={{
-        color:'#6B8F71'
+        color:'#6B8F71',
+        fontSize: '0.8rem',
       }}>
-        Enviar para...
+        Enviar <RoomIcon fontSize='large' />
       </Button>
 
       <Modal
