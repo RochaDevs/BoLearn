@@ -71,7 +71,7 @@ export const BasicModal = () => {
               backgroundColor: '#f8f190'
             }
           }}>
-            <NavLink to='/login'>
+            <NavLink to='/UserLogin'>
               Faça Login
             </NavLink>
           </Button>

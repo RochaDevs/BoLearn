@@ -81,7 +81,7 @@ export const BotaoMenuLogin = () => {
             }
           }}>
 
-            <NavLink to='/login'>
+            <NavLink to='/UserLogin'>
               Faça Login
             </NavLink>
           </Button>
@@ -90,7 +90,7 @@ export const BotaoMenuLogin = () => {
 
             <p>Cliente novo?</p>
 
-            <NavLink to='/login' className={styles.NavLink}>
+            <NavLink to='/UserCadastro' className={styles.NavLink}>
               Começe aqui
             </NavLink>
 
