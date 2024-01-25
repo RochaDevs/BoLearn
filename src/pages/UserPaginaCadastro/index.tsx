@@ -1,15 +1,15 @@
 import { Button, Typography } from "@mui/material";
-import { Formulario } from "../../components/Users/FormularioLogin";
 import styles from './UserPaginaCadastro.module.scss';
+import { FormularioCadastro } from "../../components/Users/FormularioCadastro";
 
 
 export const UserPaginaCadastro = () => {
     return (
         <section className={styles.section}>
-            <Formulario />
+            <FormularioCadastro />
             <div>
                 <Typography>
-                    Novo no BoLearn?
+                    Você já tem uma conta?
                 </Typography>
                 <Button sx={{
                     backgroundColor: '#FBF8CC',
@@ -22,7 +22,7 @@ export const UserPaginaCadastro = () => {
                         backgroundColor: '#f8f190'
                     }
                 }}>
-                    Criar sua conta na BoLearn
+                    Fazer login
                 </Button>
             </div>
         </section>
