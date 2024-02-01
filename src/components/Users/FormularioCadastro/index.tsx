@@ -1,9 +1,38 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import BoLearn from '../../../../public/LogoBolearnTransparente.png';
 import styles from './FormularioCadastro.module.scss';
-
+import React, { useState } from "react";
+import { usePostUsuario } from "../../../hooks/ReactQuery/useUsuarios";
 
 export const FormularioCadastro = () => {
+
+    const [nomeUsuario, setNomeUsuario] = useState('');
+    const [emailOuNumeroUsuario, setEmailOuNumeroUsuario] = useState('');
+    const [senhaUsuario, setSenhaUsuario] = useState ('');
+    const [senhaUsuarioConfirmacao, setSenhaUsuarioConfirmacao] = useState('')
+    const { mutate } = usePostUsuario()
+
+    const limparFormulario = () => {
+        setNomeUsuario('')
+        setEmailOuNumeroUsuario('')
+        setSenhaUsuario('')
+        setSenhaUsuarioConfirmacao
+    }
+
+    const aoSubmeterFormulario = (evento: React.FormEvent<HTMLFormElement>) => {
+        evento.preventDefault()
+
+        const novoUsuario = {
+            nomeUsuario: nomeUsuario,
+            emailOuNumeroUsuario: emailOuNumeroUsuario,
+            senhaUsuario: senhaUsuario
+        }
+
+        mutate(novoUsuario)
+
+        limparFormulario()
+    }
+
     return (
         <Box sx={{
             display: 'flex',
@@ -26,10 +55,12 @@ export const FormularioCadastro = () => {
                 Criar conta
             </Typography>
 
-            <form className={styles.formulario}>
+            <form className={styles.formulario} onSubmit={aoSubmeterFormulario}>
                 < TextField
                     label='Nome e Sobrenome'
                     variant="outlined"
+                    onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setNomeUsuario(evento.target.value)}
+                    value={nomeUsuario}
                     sx={{
                         width: '85%',
 
@@ -45,6 +76,8 @@ export const FormularioCadastro = () => {
                 < TextField
                     label='Número de celular ou e-mail'
                     variant="outlined"
+                    onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setEmailOuNumeroUsuario(evento.target.value)}
+                    value={emailOuNumeroUsuario}
                     sx={{
                         width: '85%',
 
@@ -61,6 +94,8 @@ export const FormularioCadastro = () => {
                     label='Senha'
                     type="password"
                     variant="outlined"
+                    onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setSenhaUsuario(evento.target.value)}
+                    value={senhaUsuario}
                     sx={{
                         width: '85%',
 
@@ -77,6 +112,8 @@ export const FormularioCadastro = () => {
                     label='Insira a senha nova mais uma vez'
                     type="password"
                     variant="outlined"
+                    onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setSenhaUsuarioConfirmacao(evento.target.value)}
+                    value={senhaUsuarioConfirmacao}
                     sx={{
                         width: '85%',
 
@@ -89,7 +126,9 @@ export const FormularioCadastro = () => {
                         }
                     }}
                 />
-                <Button sx={{
+                <Button 
+                    type="submit"
+                    sx={{
                     backgroundColor: '#FBF8CC',
                     color: '#000000',
                     margin: '1rem 0rem',
