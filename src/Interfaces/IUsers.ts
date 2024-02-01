@@ -1,6 +1,7 @@
 
 export interface IUsers {
-    nomeUsuario: string,
-    emailOuNumeroUsuario: string,
+    nomeUsuario: string
+    emailOuNumeroUsuario: string
     senhaUsuario: string
+    TokenSecurity?: string
 }

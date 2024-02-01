@@ -1,4 +1,4 @@
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { IUsers } from "../../Interfaces/IUsers";
 import { httpCadastrarUsers } from "../../http";
 
@@ -9,3 +9,10 @@ export const usePostUsuario = () => {
         })
     })
 }
+
+export const useGetUsuarios = () => {
+    return useQuery<IUsers[], Error>({
+        queryKey: ['usuarios'],
+        queryFn: () => httpCadastrarUsers.get('').then(resposta => resposta.data)
+    });
+};
