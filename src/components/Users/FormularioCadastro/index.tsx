@@ -2,21 +2,37 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 import BoLearn from '../../../../public/LogoBolearnTransparente.png';
 import styles from './FormularioCadastro.module.scss';
 import React, { useState } from "react";
-import { usePostUsuario } from "../../../hooks/ReactQuery/useUsuarios";
+import { useGetUsuarios, usePostUsuario } from "../../../hooks/ReactQuery/useUsuarios";
+import { validacaoDeSenha } from "./validacaoDeSenha.js";
+import { validarSeOEmailExiste } from "./validacaoDeEmailExistente.js";
 
 export const FormularioCadastro = () => {
 
     const [nomeUsuario, setNomeUsuario] = useState('');
-    const [emailOuNumeroUsuario, setEmailOuNumeroUsuario] = useState('');
-    const [senhaUsuario, setSenhaUsuario] = useState ('');
+    const [emailUsuario, setEmailUsuario] = useState('');
+    const [senhaUsuario, setSenhaUsuario] = useState('');
     const [senhaUsuarioConfirmacao, setSenhaUsuarioConfirmacao] = useState('')
+    const [inputFocadoConfirmacaoSenha, setInputFocadoConfirmacaoSenha] = useState(false);
+    const [inputFocadoEmail, setInputFocadoEmail] = useState(false);
     const { mutate } = usePostUsuario()
+    const { data: usuarios } = useGetUsuarios()
+
+    console.log(usuarios)
 
     const limparFormulario = () => {
         setNomeUsuario('')
-        setEmailOuNumeroUsuario('')
+        setEmailUsuario('')
         setSenhaUsuario('')
-        setSenhaUsuarioConfirmacao
+        setSenhaUsuarioConfirmacao('');
+        setInputFocadoConfirmacaoSenha(false);
+    }
+
+    const inputFocoEstadoConfirmacaoSenha = () => {
+        setInputFocadoConfirmacaoSenha(true)
+    }
+
+    const inputFocoEstadoEmail = () => {
+        setInputFocadoEmail(true)
     }
 
     const aoSubmeterFormulario = (evento: React.FormEvent<HTMLFormElement>) => {
@@ -24,13 +40,15 @@ export const FormularioCadastro = () => {
 
         const novoUsuario = {
             nomeUsuario: nomeUsuario,
-            emailOuNumeroUsuario: emailOuNumeroUsuario,
+            emailUsuario: emailUsuario,
             senhaUsuario: senhaUsuario
         }
 
-        mutate(novoUsuario)
+        if (validacaoDeSenha(senhaUsuario, senhaUsuarioConfirmacao)) {
+            mutate(novoUsuario)
+            limparFormulario()
+        }
 
-        limparFormulario()
     }
 
     return (
@@ -74,10 +92,11 @@ export const FormularioCadastro = () => {
                     }}
                 />
                 < TextField
-                    label='Número de celular ou e-mail'
+                    label='E-mail'
                     variant="outlined"
-                    onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setEmailOuNumeroUsuario(evento.target.value)}
-                    value={emailOuNumeroUsuario}
+                    onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setEmailUsuario(evento.target.value)}
+                    onFocus={inputFocoEstadoEmail}
+                    value={emailUsuario}
                     sx={{
                         width: '85%',
 
@@ -89,7 +108,11 @@ export const FormularioCadastro = () => {
                             lineHeight: '13px', // Ajusta a altura da etiqueta para corresponder
                         }
                     }}
+
                 />
+                {validarSeOEmailExiste(emailUsuario, usuarios) && inputFocadoEmail && (
+                    <Typography color="error" sx={{ width: '85%' }}>Este e-mail já existe.</Typography>
+                )}
                 < TextField
                     label='Senha'
                     type="password"
@@ -113,6 +136,7 @@ export const FormularioCadastro = () => {
                     type="password"
                     variant="outlined"
                     onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setSenhaUsuarioConfirmacao(evento.target.value)}
+                    onFocus={inputFocoEstadoConfirmacaoSenha}
                     value={senhaUsuarioConfirmacao}
                     sx={{
                         width: '85%',
@@ -126,18 +150,21 @@ export const FormularioCadastro = () => {
                         }
                     }}
                 />
-                <Button 
+                {!validacaoDeSenha(senhaUsuario, senhaUsuarioConfirmacao) && inputFocadoConfirmacaoSenha && (
+                    <Typography color="error" sx={{ width: '85%' }}>As senhas não coincidem.</Typography>
+                )}
+                <Button
                     type="submit"
                     sx={{
-                    backgroundColor: '#FBF8CC',
-                    color: '#000000',
-                    margin: '1rem 0rem',
-                    width: '50%',
+                        backgroundColor: '#FBF8CC',
+                        color: '#000000',
+                        margin: '1rem 0rem',
+                        width: '50%',
 
-                    '&:hover': {
-                        backgroundColor: '#f8f190'
-                    }
-                }}>
+                        '&:hover': {
+                            backgroundColor: '#f8f190'
+                        }
+                    }}>
                     Continuar
                 </Button>
             </form>
