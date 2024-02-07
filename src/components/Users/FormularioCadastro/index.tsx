@@ -44,7 +44,7 @@ export const FormularioCadastro = () => {
             senhaUsuario: senhaUsuario
         }
 
-        if (validacaoDeSenha(senhaUsuario, senhaUsuarioConfirmacao)) {
+        if (validacaoDeSenha(senhaUsuario, senhaUsuarioConfirmacao) && !validarSeOEmailExiste(emailUsuario, usuarios)) {
             mutate(novoUsuario)
             limparFormulario()
         }
@@ -79,6 +79,7 @@ export const FormularioCadastro = () => {
                     variant="outlined"
                     onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setNomeUsuario(evento.target.value)}
                     value={nomeUsuario}
+                    required
                     sx={{
                         width: '85%',
 
@@ -95,8 +96,9 @@ export const FormularioCadastro = () => {
                     label='E-mail'
                     variant="outlined"
                     onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setEmailUsuario(evento.target.value)}
-                    onFocus={inputFocoEstadoEmail}
+                    onBlur={inputFocoEstadoEmail}
                     value={emailUsuario}
+                    required
                     sx={{
                         width: '85%',
 
@@ -119,6 +121,7 @@ export const FormularioCadastro = () => {
                     variant="outlined"
                     onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setSenhaUsuario(evento.target.value)}
                     value={senhaUsuario}
+                    required
                     sx={{
                         width: '85%',
 
@@ -138,6 +141,7 @@ export const FormularioCadastro = () => {
                     onChange={(evento: React.ChangeEvent<HTMLInputElement>) => setSenhaUsuarioConfirmacao(evento.target.value)}
                     onFocus={inputFocoEstadoConfirmacaoSenha}
                     value={senhaUsuarioConfirmacao}
+                    required
                     sx={{
                         width: '85%',
 

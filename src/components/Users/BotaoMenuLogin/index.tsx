@@ -47,7 +47,7 @@ export const BotaoMenuLogin = () => {
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        onMouseEnter={aoPassarOMouse}
+        onClick={aoPassarOMouse}
         ref={meuRef}
         sx={{
           color: '#6B8F71'

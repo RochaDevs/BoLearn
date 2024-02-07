@@ -5,6 +5,7 @@ import { UserPaginaLogin } from "../pages/UserPaginaLogin";
 import { UserPaginaCadastro } from "../pages/UserPaginaCadastro";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { UsuarioEstaLogadoProvider } from "../hooks/useContext/usuarioEstaLogado";
+import { UserPaginaPrincipal } from "../pages/UserPaginaPrincipal";
 
 const queryCliente = new QueryClient();
 
@@ -21,6 +22,7 @@ const AppRoutes = () => {
                                 <UserPaginaPadrao />
                             </UsuarioEstaLogadoProvider>
                         }>
+                            <Route path='/' element={<UserPaginaPrincipal />} />
                             <Route path='/UserLogin' element={<UserPaginaLogin />} />
                             <Route path='/UserCadastro' element={<UserPaginaCadastro />} />
                         </Route>
