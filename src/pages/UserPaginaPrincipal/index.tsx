@@ -1,5 +1,5 @@
 import { Box } from "@mui/material"
-import { CarouselNav } from "../../components/Users/CarouselNav/indes"
+import { CarouselNav } from "../../components/Users/CarouselNav"
 
 export const UserPaginaPrincipal = () => {
     return (
@@ -7,9 +7,9 @@ export const UserPaginaPrincipal = () => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            height: '100vh'
+            height: '100vh',
+            margin: '0rem 4rem'
         }}>
-            <h1>Página Principal</h1>
             < CarouselNav /> 
         </Box>
     )
