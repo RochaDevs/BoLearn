@@ -159,6 +159,8 @@ export const FormularioCadastro = () => {
                 )}
                 <Button
                     type="submit"
+                    data-testid='submit-button-formCadastro'
+                    disabled={!nomeUsuario}
                     sx={{
                         backgroundColor: '#FBF8CC',
                         color: '#000000',
