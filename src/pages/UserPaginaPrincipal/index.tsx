@@ -1,6 +1,7 @@
 import { Box } from "@mui/material"
 import { SlideNavegacao } from "../../components/Users/SlideNavegacao"
 import { CardUnicoNavegacao } from "../../components/Users/CardUnicoNavegacao"
+import { CardQuatroNavegacao } from "../../components/Users/CardQuatroNavegacao"
 
 export const UserPaginaPrincipal = () => {
     return (
@@ -21,11 +22,14 @@ export const UserPaginaPrincipal = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '1rem'
+                gap: '1rem',
+                height: '50%'
+
 
             }}>
+                <CardQuatroNavegacao />
                 <CardUnicoNavegacao />
-                <CardUnicoNavegacao />
+                <CardQuatroNavegacao />
                 <CardUnicoNavegacao />
             </Box>
 
@@ -40,24 +44,9 @@ export const UserPaginaPrincipal = () => {
                 gap: '1rem'
 
             }}>
+                <CardQuatroNavegacao />
                 <CardUnicoNavegacao />
-                <CardUnicoNavegacao />
-                <CardUnicoNavegacao />
-            </Box>
-
-            <SlideNavegacao
-                tituloCarousel="Mais vendidos em Titulo Qualquer"
-            />
-            
-            <Box sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '1rem'
-
-            }}>
-                <CardUnicoNavegacao />
-                <CardUnicoNavegacao />
+                <CardQuatroNavegacao />
                 <CardUnicoNavegacao />
             </Box>
 
@@ -72,8 +61,9 @@ export const UserPaginaPrincipal = () => {
                 gap: '1rem'
 
             }}>
+                <CardQuatroNavegacao />
                 <CardUnicoNavegacao />
-                <CardUnicoNavegacao />
+                <CardQuatroNavegacao />
                 <CardUnicoNavegacao />
             </Box>
 
@@ -88,8 +78,26 @@ export const UserPaginaPrincipal = () => {
                 gap: '1rem'
 
             }}>
+                <CardQuatroNavegacao />
                 <CardUnicoNavegacao />
+                <CardQuatroNavegacao />
                 <CardUnicoNavegacao />
+            </Box>
+
+            <SlideNavegacao
+                tituloCarousel="Mais vendidos em Titulo Qualquer"
+            />
+            
+            <Box sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '1rem'
+
+            }}>
+                <CardQuatroNavegacao />
+                <CardUnicoNavegacao />
+                <CardQuatroNavegacao />
                 <CardUnicoNavegacao />
             </Box>
         </Box>

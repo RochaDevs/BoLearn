@@ -6,7 +6,7 @@ import { Card, Typography } from "@mui/material";
 
 const StyledSliderContainer = styled.div`
     max-width: 100%;
-    height: auto;
+    height: 100%;
 `;
 
 const StyledSlider = styled(Slider)`
@@ -24,12 +24,19 @@ const StyledSlider = styled(Slider)`
     .slick-track {
         display: flex;
         gap: 1rem;
+        height: auto;
     }
+
 `;
 
 const StyledCard = styled(Card)`
     height: auto;
     width: auto;
+`
+
+const StyledImg = styled.img`
+    height: auto;
+    width: 100%;
 `
 
 interface ISlideNavegacao {
@@ -40,7 +47,7 @@ export const SlideNavegacao = ({ tituloCarousel }: ISlideNavegacao) => {
     const settings = {
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 5,
         slidesToScroll: 3,
         centerMode: true
     };
@@ -52,28 +59,28 @@ export const SlideNavegacao = ({ tituloCarousel }: ISlideNavegacao) => {
             </Typography>
             <StyledSlider {...settings}>
                 <StyledCard>
-                    <img src="/public/imgmodelo.PNG" alt="Imagem teste" />
+                    <StyledImg src="/public/imgmodelo.png" alt="Imagem teste" />
                 </StyledCard>
                 <StyledCard>
-                    <img src="/public/imgmodelo.PNG" alt="Imagem teste" />
+                    <StyledImg src="/public/imgmodelo.png" alt="Imagem teste" />
                 </StyledCard>
                 <StyledCard>
-                    <img src="/public/imgmodelo.PNG" alt="Imagem teste" />
+                    <StyledImg src="/public/imgmodelo.png" alt="Imagem teste" />
                 </StyledCard>
                 <StyledCard>
-                    <img src="/public/imgmodelo.PNG" alt="Imagem teste" />
+                    <StyledImg src="/public/imgmodelo.png" alt="Imagem teste" />
                 </StyledCard>
                 <StyledCard>
-                    <img src="/public/imgmodelo.PNG" alt="Imagem teste" />
+                    <StyledImg src="/public/imgmodelo.png" alt="Imagem teste" />
                 </StyledCard>
                 <StyledCard>
-                    <img src="/public/imgmodelo.PNG" alt="Imagem teste" />
+                    <StyledImg src="/public/imgmodelo.png" alt="Imagem teste" />
                 </StyledCard>
                 <StyledCard>
-                    <img src="/public/imgmodelo.PNG" alt="Imagem teste" />
+                    <StyledImg src="/public/imgmodelo.png" alt="Imagem teste" />
                 </StyledCard>
                 <StyledCard>
-                    <img src="/public/imgmodelo.PNG" alt="Imagem teste" />
+                    <StyledImg src="/public/imgmodelo.png" alt="Imagem teste" />
                 </StyledCard>
             </StyledSlider>
         </StyledSliderContainer>
